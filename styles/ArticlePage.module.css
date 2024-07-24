@@ -1,0 +1,94 @@
+/* styles/ArticlePage.module.css */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 110px; /* 增加导航栏高度 */
+    margin-left: 15px;
+    margin-right: 15px;
+    position: relative; /* 为了能使用伪元素 */
+  }
+  
+  .header::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* 定位到底部 */
+    left: 0%; /* 控制横线偏移到靠右部分 */
+    width: 100%; /* 横线长度，根据需要调整 */
+    height: 2px; /* 横线高度 */
+    background-color: black; /* 横线颜色 */
+  }
+  
+  .header .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header .buttonGroup {
+    display: flex;
+  }
+  
+  .header .button {
+    margin-left: 20px;
+    padding: 8px 15px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .header .button:hover {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .content {
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 50px; /* 增加与导航栏距离 */
+    padding-bottom: 50px; /* 确保底部有一些间隔 */
+  }
+  
+  .articlesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .articleBox {
+    flex: 1 1 calc(50% - 20px); /* 每行两个 */
+    max-width: calc(50% - 20px); /* 防止超出范围 */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 0px 12px 20px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    background-color: rgba(255, 255, 255, 0.8); /* 透明白色背景 */
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .articleBox:hover {
+    transform: translateY(-5px); /* 提升效果 */
+  }
+  
+  .pagination {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .paginationContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .title {
+    font-size: 24px; /* 设置标题的字体大小 */
+    margin-bottom: 10px; /* 设置标题与主题之间的间距 */
+  }

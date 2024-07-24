@@ -1,0 +1,128 @@
+/* styles/EssayPage.module.css */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;  
+    height: 110px; /* 增加导航栏高度 */
+    margin-left: 15px;
+    margin-right:15px;
+    position: relative; /* 为了能使用伪元素 */
+  }
+  
+  .header::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* 定位到底部 */
+    left: 0%; /* 控制横线偏移到靠右部分 */
+    width: 100%; /* 横线长度，根据需要调整 */
+    height: 2px; /* 横线高度 */
+    background-color: black; /* 横线颜色 */
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .buttonGroup {
+    display: flex;
+  }
+  
+  .buttonGroup .button {
+    margin-left: 20px;
+    padding: 8px 15px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size:20px;
+  }
+  
+  .buttonGroup .button:hover {
+    background-color: black;
+    color: white;
+    font-size:20px;
+  }
+  
+  .content {
+    padding: 2rem;
+  }
+  
+  .essaySection {
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+  
+  .theme {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .separator {
+    margin: 1rem 0;
+    border: 1px solid rgba(0, 0, 0, 0); /* 透明颜色 */
+  }
+  
+  .views {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .proView, .conView {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 0px 12px 20px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    width: 45%; /* 控制各列宽度 */
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size:1.3rem;
+  }
+
+  .proTitle {
+    color: darkred; /* 深红色 */
+    font-size: 2rem; /* 标题字体大小 */
+    margin-bottom: 5px;
+  }
+  
+  .conTitle {
+    color: darkblue; /* 深蓝色 */
+    font-size: 2rem; /* 标题字体大小 */
+    margin-bottom: 5px;
+  }
+
+  .argumentsSection {
+    margin-top: 1rem; /* 添加上方间距，确保内容与论点之间有间隔 */
+  }
+  
+  .argument {
+    margin-top: 0.5rem; /* 每个论点之间的间距 */
+  }
+
+  /* 新增样式用于标题和正文区域 */
+.articleSection {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 0px 12px 20px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  .articleTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: black;
+    margin-bottom: 1rem;
+  }
+  
+  .articleContent {
+    font-size: 1.2rem;
+    color: black;
+  }

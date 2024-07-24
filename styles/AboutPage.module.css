@@ -1,0 +1,108 @@
+/* styles/AboutPage.module.css */
+
+
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  
+    height: 110px; /* 增加导航栏高度 */
+    margin-left: 15px;
+    margin-right:15px;
+    position: relative; /* 为了能使用伪元素 */
+  }
+  
+  .header::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* 定位到底部 */
+    left: 0%; /* 控制横线偏移到靠右部分 */
+    width: 100%; /* 横线长度，根据需要调整 */
+    height: 2px; /* 横线高度 */
+    background-color: black; /* 横线颜色 */
+  }
+  
+  .header .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header .buttonGroup {
+    display: flex;
+  }
+  
+  .header .button {
+    margin-left: 20px;
+    padding: 8px 15px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size:20px;
+    
+  }
+  
+  .header .button:hover {
+    background-color: black;
+    color: white;
+    font-size:20px;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding-top: 50px; /* 增加与导航栏距离 */
+    padding-bottom: 50px; /* 确保底部有一些间隔 */
+    min-height: calc(100vh - 160px); /* 确保内容区域最小高度为视口高度减去导航栏高度 */
+  }
+  
+  .aboutSection {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 0px 12px 20px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    display: flex;
+    flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+    max-width: 350px; /* 内容宽度为60% */
+    background-color: rgba(255, 255, 255, 0.8); /* 透明白色背景 */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    backdrop-filter: blur(5px); /* 可选：添加模糊效果 */
+    font-size: 20px;
+  }
+  
+  .profilePicture {
+    margin-bottom: 20px;
+  }
+  
+  .roundedImage {
+    border-radius: 50%; /* 圆形头像 */
+  }
+  
+  .introduction {
+    color: black;
+  }
+  
+  .socialMediaList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .socialMediaList li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  .socialMediaList a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .socialMediaList a:hover {
+    text-decoration: underline;
+  }

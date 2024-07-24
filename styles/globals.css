@@ -16,14 +16,19 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body, html {
+  background-color: rgb(184, 181, 181);
+  margin: 0;
+  padding: 0;
+  color: black; /* 确保文本颜色为黑色，以便与白色背景对比 */
+  font-family: "华文中宋", "STSong", serif;
+  height: 100%;
+  width: 100%;
+  background-image: url('/back.png'); /* 设置背景图片 */
+  background-size: cover; /* 使背景图片覆盖整个页面 */
+  background-position: center; /* 将背景图片居中 */
+  background-repeat: no-repeat; /* 防止背景图片重复 */
+  background-attachment: fixed; /* 背景固定 */
 }
 
 @layer utilities {
