@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/HomePage.module.css';
+import Link from 'next/link';
 import Image from 'next/image';
 import { message } from 'antd';
 import { useRouter } from 'next/router';
@@ -58,9 +59,15 @@ const HomePage = () => {
           <Image src="/logo.png" alt="Logo" width={250} height={100} />
         </div>
         <div className={styles.buttonGroup}>
-          <a href="/" className={styles.button}>写作</a>
-          <a href="/ArticlePage" className={styles.button}>浏览</a>
-          <a href="/about" className={styles.button}>关于</a>
+          <Link href="/" passHref>
+            <button className={styles.button}>写作</button>
+          </Link>
+          <Link href="/ArticlePage" passHref>
+            <button className={styles.button}>浏览</button>
+          </Link>
+          <Link href="/about" passHref>
+            <button className={styles.button}>关于</button>
+          </Link>
         </div>
       </header>
       

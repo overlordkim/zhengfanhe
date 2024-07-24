@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from '../../styles/EssayPage.module.css';
-
+import Link from 'next/link';
 type Essay = {
   theme: string;
   pro: string;
@@ -66,9 +66,15 @@ const EssayPage: React.FC = () => {
         <Image src="/logo.png" alt="Logo" width={250} height={100} />
       </div>
       <div className={styles.buttonGroup}>
-        <a href="/" className={styles.button}>写作</a>
-        <a href="/ArticlePage" className={styles.button}>浏览</a>
-        <a href="/about" className={styles.button}>关于</a>
+      <Link href="/" passHref>
+            <button className={styles.button}>写作</button>
+          </Link>
+          <Link href="/ArticlePage" passHref>
+            <button className={styles.button}>浏览</button>
+          </Link>
+          <Link href="/about" passHref>
+            <button className={styles.button}>关于</button>
+          </Link>
       </div>
     </header>
   </div>;
@@ -81,9 +87,15 @@ const EssayPage: React.FC = () => {
         <Image src="/logo.png" alt="Logo" width={250} height={100} />
       </div>
       <div className={styles.buttonGroup}>
-        <a href="/" className={styles.button}>写作</a>
-        <a href="/ArticlePage" className={styles.button}>浏览</a>
-        <a href="/about" className={styles.button}>关于</a>
+      <Link href="/" passHref>
+            <button className={styles.button}>写作</button>
+          </Link>
+          <Link href="/ArticlePage" passHref>
+            <button className={styles.button}>浏览</button>
+          </Link>
+          <Link href="/about" passHref>
+            <button className={styles.button}>关于</button>
+          </Link>
       </div>
         </header>
         <main className={styles.content}>
@@ -124,9 +136,15 @@ const EssayPage: React.FC = () => {
           <Image src="/logo.png" alt="Logo" width={250} height={100} />
         </div>
         <div className={styles.buttonGroup}>
-          <a href="/" className={styles.button}>写作</a>
-          <a href="/ArticlePage" className={styles.button}>浏览</a>
-          <a href="/about" className={styles.button}>关于</a>
+        <Link href="/" passHref>
+            <button className={styles.button}>写作</button>
+          </Link>
+          <Link href="/ArticlePage" passHref>
+            <button className={styles.button}>浏览</button>
+          </Link>
+          <Link href="/about" passHref>
+            <button className={styles.button}>关于</button>
+          </Link>
         </div>
       </header>
 

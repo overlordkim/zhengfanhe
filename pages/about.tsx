@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from '../styles/AboutPage.module.css';
-
+import Link from 'next/link';
 const AboutPage = () => {
   return (
     <div>
@@ -10,9 +10,15 @@ const AboutPage = () => {
           <Image src="/logo.png" alt="Logo" width={250} height={100} />
         </div>
         <div className={styles.buttonGroup}>
-                  <a href="/" className={styles.button}>写作</a>
-                  <a href="/ArticlePage" className={styles.button}>浏览</a>  {/* 假设这些按钮链接到首页暂时 */}
-                    <a href="/about" className={styles.button}>关于</a>
+        <Link href="/" passHref>
+            <button className={styles.button}>写作</button>
+          </Link>
+          <Link href="/ArticlePage" passHref>
+            <button className={styles.button}>浏览</button>
+          </Link>
+          <Link href="/about" passHref>
+            <button className={styles.button}>关于</button>
+          </Link>
         </div>
       </header>
 
