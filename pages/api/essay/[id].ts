@@ -1,13 +1,24 @@
 // pages/api/essay/[id].ts
 import { NextApiRequest, NextApiResponse } from 'next';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+import fs from 'fs/promises';
+import path from 'path';
 
-async function openDb() {
-  return open({
-    filename: './public/example.db',
-    driver: sqlite3.Database
-  });
+// JSON file path
+const jsonDataPath = path.resolve('./essay_data.json');
+
+// Function to read data from the JSON file
+async function readData() {
+  try {
+    const data = await fs.readFile(jsonDataPath, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    if (error instanceof Error && (error as NodeJS.ErrnoException).code === 'ENOENT') {
+      // File not found, return empty array
+      return [];
+    } else {
+      throw error;
+    }
+  }
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -19,10 +30,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const db = await openDb();
-    const essay = await db.get('SELECT * FROM debate WHERE id = ?', id);
-    
-    if (essay) {
+    const data = await readData();
+    const index = Number(id) - 1; // Convert id to number and adjust for zero-based index
+
+    if (index >= 0 && index < data.length) {
+      const essay = data[index];
       res.status(200).json(essay);
     } else {
       res.status(404).json({ error: 'Essay not found' });

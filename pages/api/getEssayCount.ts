@@ -1,25 +1,35 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+import fs from 'fs/promises';
+import path from 'path';
 
-// Open SQLite database
-async function openDb() {
-  return open({
-    filename: './public/example.db',
-    driver: sqlite3.Database,
-  });
+// JSON file path
+const jsonDataPath = path.resolve('./essay_data.json');
+
+// Function to read data from the JSON file
+async function readData() {
+  try {
+    const data = await fs.readFile(jsonDataPath, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    if (error instanceof Error && (error as NodeJS.ErrnoException).code === 'ENOENT') {
+      // File not found, return empty array
+      return [];
+    } else {
+      throw error;
+    }
+  }
 }
 
 // Define API route handler
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     try {
-      const db = await openDb();
-      const result = await db.get('SELECT COUNT(*) as count FROM debate');
+      const data = await readData();
+      const count = data.length;
 
-      res.status(200).json(result);
+      res.status(200).json({ count });
     } catch (error) {
-      console.error('Database error: ', error);
+      console.error('JSON file error: ', error);
       res.status(500).json({ message: '查询作文数量时出错' });
     }
   } else {
