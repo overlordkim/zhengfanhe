@@ -16,7 +16,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const db = await openDb();
     const offset = (Number(page) - 1) * Number(limit);
+
+    console.log('in');
     const essays = await db.all('SELECT * FROM debate LIMIT ? OFFSET ?', [Number(limit), offset]);
+    console.log('out');
     const totalEssays = await db.get('SELECT COUNT(*) as count FROM debate');
 
     res.status(200).json({

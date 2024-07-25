@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import styles from '../styles/ArticlePage.module.css';
 import Link from 'next/link';
+import Image from 'next/image';
 interface Essay {
   id: number;
   title: string;
@@ -40,7 +41,7 @@ const ArticlePage: React.FC = () => {
     <div>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <img src="/logo.png" alt="Logo" width="250" height="100" />
+        <Image src="/logo.png" alt="Logo" width={250} height={100} />
         </div>
         <div className={styles.buttonGroup}>
         <Link href="/" passHref>
@@ -57,12 +58,12 @@ const ArticlePage: React.FC = () => {
 
       <main className={styles.content}>
         <div className={styles.articlesContainer}>
-          {essays.map((essay) => (
-            <div key={essay.id} className={styles.articleBox} onClick={() => handleNavigate(essay.id)}>
-              <strong className={styles.title}>{essay.title}</strong>
-              <p>{essay.theme}</p>
-            </div>
-          ))}
+        {essays.filter(essay => essay.title.trim() !== "").map((essay) => (
+        <div key={essay.id} className={styles.articleBox} onClick={() => handleNavigate(essay.id)}>
+          <strong className={styles.title}>{essay.title}</strong>
+          <p>{essay.theme}</p>
+        </div>
+      ))}
               </div>
               <div className={styles.paginationContainer}>
         <ConfigProvider
