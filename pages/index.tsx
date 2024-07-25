@@ -34,7 +34,7 @@ const HomePage = () => {
       }
 
       const newId = count + 1;
-
+      console.log(newId);
       // 立即跳转到生成的 ID 页面
       router.push(`/essay/${newId}`);
       const saveResponse = await fetch('/api/saveTopic', {
