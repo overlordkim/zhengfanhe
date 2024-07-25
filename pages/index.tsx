@@ -25,10 +25,9 @@ const HomePage = () => {
     setResult(data.result);
     if (data.result == "True") {
       message.success("是一个不错的作文题！");
-      console.log("here1");
       const countKey = 'essayCount';
       let count = await kv.get(countKey) as number | null;
-      console.log("here2");
+      message.warning(count);
       if (count === null) {
         count = 0;
       }
