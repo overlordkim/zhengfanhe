@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { message } from 'antd';
 import { useRouter } from 'next/router';
-
+import { kv } from '@vercel/kv'; // 确认已安装 Vercel KV 客户端库
 const HomePage = () => {
   const [inputText, setInputText] = useState('');
   const [result, setResult] = useState('');
@@ -25,10 +25,15 @@ const HomePage = () => {
     setResult(data.result);
     if (data.result == "True") {
       message.success("是一个不错的作文题！");
-      // 获取当前作文数量
-      const countResponse = await fetch('/api/getEssayCount');
-      const countData = await countResponse.json();
-      const newId = countData.count + 1;
+
+      const countKey = 'essayCount';
+      let count = await kv.get(countKey) as number | null;
+
+      if (count === null) {
+        count = 0;
+      }
+
+      const newId = count + 1;
 
       // 立即跳转到生成的 ID 页面
       router.push(`/essay/${newId}`);
@@ -41,6 +46,7 @@ const HomePage = () => {
       });
 
       const saveData = await saveResponse.json();
+      console.log(saveData);
     } else {
       message.error("似乎不是一个合适的作文题呢...");
     }
