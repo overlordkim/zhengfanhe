@@ -2,6 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import { kv } from '@vercel/kv'; // 确认已安装 Vercel KV 客户端库
 
+if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
+  throw new Error('Missing required environment variables KV_REST_API_URL and KV_REST_API_TOKEN');
+}
+
 // Function to get access token from Baidu AI
 async function getAccessToken() {
   const url = "https://aip.baidubce.com/oauth/2.0/token";
